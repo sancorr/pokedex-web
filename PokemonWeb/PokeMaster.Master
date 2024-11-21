@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PokeMaster.master.cs" Inherits="PokemonWeb.PokeMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Aca menu</h1>
+            <a href="ejemplo1ConMaster.aspx">pagina con master</a>
+            <a href="Default.aspx">default</a>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                <p>Aca contenido</p>
+            </asp:ContentPlaceHolder>
+            <h5>Aca footer</h5>
+        </div>
+    </form>
+</body>
+</html>
