@@ -11,79 +11,115 @@ namespace PokemonWeb
 {
 
 
-	public partial class PokeMaster
+	public partial class MiPerfil
 	{
 
 		/// <summary>
-		/// Control head.
+		/// Control lblEmail.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+		protected global::System.Web.UI.WebControls.Label lblEmail;
 
 		/// <summary>
-		/// Control form1.
+		/// Control tbxEmail.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+		protected global::System.Web.UI.WebControls.TextBox tbxEmail;
 
 		/// <summary>
-		/// Control btnIngresar.
+		/// Control lblNombre.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnIngresar;
+		protected global::System.Web.UI.WebControls.Label lblNombre;
 
 		/// <summary>
-		/// Control btnRegistrarse.
+		/// Control tbxNombre.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnRegistrarse;
+		protected global::System.Web.UI.WebControls.TextBox tbxNombre;
 
 		/// <summary>
-		/// Control btnSalir.
+		/// Control lblApellido.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnSalir;
+		protected global::System.Web.UI.WebControls.Label lblApellido;
 
 		/// <summary>
-		/// Control lblUser.
+		/// Control tbxApellido.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label lblUser;
+		protected global::System.Web.UI.WebControls.TextBox tbxApellido;
 
 		/// <summary>
-		/// Control imageAvatar.
+		/// Control lblFechaNacimiento.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Image imageAvatar;
+		protected global::System.Web.UI.WebControls.Label lblFechaNacimiento;
 
 		/// <summary>
-		/// Control MainContent.
+		/// Control tbxFecha.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+		protected global::System.Web.UI.WebControls.TextBox tbxFecha;
+
+		/// <summary>
+		/// Control lblImagenPerfil.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblImagenPerfil;
+
+		/// <summary>
+		/// Control tbxImagenPerfil.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlInputFile tbxImagenPerfil;
+
+		/// <summary>
+		/// Control imagenPerfil.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Image imagenPerfil;
+
+		/// <summary>
+		/// Control btnGuardar.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnGuardar;
 	}
 }
