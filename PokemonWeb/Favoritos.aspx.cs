@@ -13,5 +13,13 @@ namespace PokemonWeb
 		{
 
 		}
+
+		private void Page_Error(object sender, EventArgs e)
+		{
+			Exception exc = Server.GetLastError();
+
+			Session.Add("error", exc.ToString());
+			Server.Transfer("Error.aspx");
+		}
 	}
 }

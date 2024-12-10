@@ -63,13 +63,16 @@ namespace PokemonWeb
 			}
 			catch (Exception ex)
 			{
-				Session.Add("error", ex);
-				throw;
+				Session.Add("error", ex.ToString());
 			}
 		}
 
 		protected void btnAceptar_Click(object sender, EventArgs e)
 		{
+			Page.Validate();
+			if (!Page.IsValid)
+				return;
+
 			Pokemon pokemon = new Pokemon();
 			PokemonNegocio negocio = new PokemonNegocio();
 
@@ -99,8 +102,7 @@ namespace PokemonWeb
 			}
 			catch (Exception ex)
 			{
-				Session.Add("error", ex);
-				throw;
+				Session.Add("error", ex.ToString());
 			}
 		}
 
@@ -111,12 +113,20 @@ namespace PokemonWeb
 
 		protected void btnEliminarConfirmar_Click(object sender, EventArgs e)
 		{
-			if (chkEliminarConfirmar.Checked)
+			try
 			{
-				PokemonNegocio negocio = new PokemonNegocio();
-				Pokemon pokemon = (Pokemon)Session["pokemon"];
-				negocio.eliminar(pokemon.Id);
-				Response.Redirect("ListaPokemon.aspx");
+				if (chkEliminarConfirmar.Checked)
+				{
+					PokemonNegocio negocio = new PokemonNegocio();
+					Pokemon pokemon = (Pokemon)Session["pokemon"];
+					negocio.eliminar(pokemon.Id);
+					Response.Redirect("ListaPokemon.aspx");
+				}
+			}
+			catch (Exception ex)
+			{
+
+				Session.Add("error", ex.ToString());
 			}
 		}
 
@@ -127,10 +137,27 @@ namespace PokemonWeb
 
 		protected void btnDesabilitar_Click(object sender, EventArgs e)
 		{
-			PokemonNegocio negocio = new PokemonNegocio();
-			Pokemon pokemon = (Pokemon)Session["pokemon"];
-			negocio.eliminarLogico(pokemon.Id, !pokemon.Activo);
-			Response.Redirect("ListaPokemon.aspx");
+			try
+			{
+				PokemonNegocio negocio = new PokemonNegocio();
+				Pokemon pokemon = (Pokemon)Session["pokemon"];
+				negocio.eliminarLogico(pokemon.Id, !pokemon.Activo);
+				Response.Redirect("ListaPokemon.aspx");
+			}
+			catch (Exception ex)
+			{
+				Session.Add("error", ex.ToString());
+			}
+			
+		}
+
+
+		private void Page_Error(object sender, EventArgs e)
+		{
+			Exception exc = Server.GetLastError();
+
+			Session.Add("error", exc.ToString());
+			Server.Transfer("Error.aspx");
 		}
 	}
 }

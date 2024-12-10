@@ -26,8 +26,24 @@ namespace PokemonWeb
 
 		protected void btnVerPokemon_Click(object sender, EventArgs e)
 		{
-			string valor = ((Button)sender).CommandArgument;
-			Response.Redirect("DetallePokemon.aspx?id=" + valor);
+			try
+			{
+				string valor = ((Button)sender).CommandArgument;
+				Response.Redirect("DetallePokemon.aspx?id=" + valor);
+
+			}
+			catch (Exception ex)
+			{
+				Session.Add("error", "Error al direccionar, intente de nuevo");
+			}
+		}
+
+		private void Page_Error(object sender, EventArgs e)
+		{
+			Exception exc = Server.GetLastError();
+
+			Session.Add("error", exc.ToString());
+			Server.Transfer("Error.aspx");
 		}
 	}
 }

@@ -13,19 +13,26 @@ namespace PokemonWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!IsPostBack)
+			try
 			{
-				if (Seguridad.sesionActiva(Session["user"]))
+				if (!IsPostBack)
 				{
-					Entrenador user = (Entrenador)Session["user"];
-					tbxEmail.Text = user.Email;
-					tbxEmail.ReadOnly = true;
-					tbxNombre.Text = user.Nombre;
-					tbxApellido.Text = user.Apellido;
-					tbxFecha.Text = user.FechaNacimiento.ToString("yyyy-MM-dd");
-					if (!string.IsNullOrEmpty(user.ImagenPerfil))
-						imagenPerfil.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
+					if (Seguridad.sesionActiva(Session["user"]))
+					{
+						Entrenador user = (Entrenador)Session["user"];
+						tbxEmail.Text = user.Email;
+						tbxEmail.ReadOnly = true;
+						tbxNombre.Text = user.Nombre;
+						tbxApellido.Text = user.Apellido;
+						tbxFecha.Text = user.FechaNacimiento.ToString("yyyy-MM-dd");
+						if (!string.IsNullOrEmpty(user.ImagenPerfil))
+							imagenPerfil.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
+					}
 				}
+			}
+			catch (Exception ex)
+			{
+				Session.Add("error", "Error al cargar la pagina");
 			}
 		}
 
@@ -33,6 +40,10 @@ namespace PokemonWeb
 		{
 			try
 			{
+				Page.Validate();
+				if (!Page.IsValid)
+					return;
+
 				EntrenadorNegocio negocio = new EntrenadorNegocio();
 				Entrenador user = (Entrenador)Session["user"];
 				//Ruta donde se va a escribir la referencia a la imagen- ruta fisica
@@ -57,8 +68,17 @@ namespace PokemonWeb
 			}
 			catch (Exception ex)
 			{
-				Session.Add("Error", ex.ToString());
+				Session.Add("error", ex.ToString());
 			}
+		}
+
+
+		private void Page_Error(object sender, EventArgs e)
+		{
+			Exception exc = Server.GetLastError();
+
+			Session.Add("error", exc.ToString());
+			Server.Transfer("Error.aspx");
 		}
 	}
 }

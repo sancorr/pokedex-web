@@ -20,23 +20,32 @@ namespace PokemonWeb
 		{
 			try
 			{
+				Page.Validate();
+				if (!Page.IsValid)
+					return;
+
 				EntrenadorNegocio entrenadorNegocio = new EntrenadorNegocio();
-				Entrenador user = new Entrenador();
-				EmailService email = new EmailService();
+				Entrenador user = new Entrenador();				
 
 				user.Email = tbxEmailEntrenador.Text;
 				user.Pass = tbxPasswordEntrenador.Text;
 				user.Id = entrenadorNegocio.insertarTrainer(user);
 				Session.Add("user", user);
-
-				//email.armarEmail(entrenador.Email, "Bienvenido/a entrenador pokemon", "Te damos la bienvenida a la aplicacion");
-				//email.enviarMail();
+				
 				Response.Redirect("Default.aspx", false);
 			}
 			catch (Exception ex)
 			{
 				Session.Add("error", ex.ToString());
 			}
+		}
+
+		private void Page_Error(object sender, EventArgs e)
+		{
+			Exception exc = Server.GetLastError();
+
+			Session.Add("error", exc.ToString());
+			Server.Transfer("Error.aspx");
 		}
 	}
 }

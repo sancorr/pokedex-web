@@ -13,26 +13,31 @@
             <div class="mb-3">
                 <asp:Label runat="server" for="tbxNumero" ID="lblNumero" CssClass="form-label" Text="Número"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="tbxNumero"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxNumero" ErrorMessage="Número es requerido"/>
             </div>
 
             <div class="mb-3">
                 <asp:Label runat="server" for="tbxNombre" ID="lblNombre" CssClass="form-label" Text="Nombre:"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="tbxNombre"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxNombre" ErrorMessage="Nombre es requerido"/>
             </div>
 
             <div class="mb-3">
                 <asp:Label runat="server" for="tbxDescripcion" ID="lblDescripcion" CssClass="form-label" Text="Descripción"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="tbxDescripcion" TextMode="MultiLine"></asp:TextBox>
+                <asp:RangeValidator runat="server" Type="String" MinimumValue="0" MaximumValue="50" ErrorMessage="Máximo 50 caracteres" ControlToValidate="tbxDescripcion" />
             </div>
 
             <div class="mb-3">
                 <asp:Label runat="server" for="DropDownTipo" Text="Tipo:" CssClass="form-label" ID="lblTipo"></asp:Label>
                 <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle" runat="server" ID="DropDownTipo"></asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDownTipo" ErrorMessage="Tipo es requerido"/>
             </div>
 
             <div class="mb-3">
                 <asp:Label runat="server" for="DropDownDebilidad" Text="Debilidad:" CssClass="form-label" ID="lblDebilidad"></asp:Label>
                 <asp:DropDownList runat="server" CssClass="btn btn-secondary dropdown-toggle" ID="DropDownDebilidad"></asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDownDebilidad" ErrorMessage="Debilidad es requerido"/>
             </div>
 
             <div class="mb-3">

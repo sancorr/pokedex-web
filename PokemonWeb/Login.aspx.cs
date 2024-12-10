@@ -20,6 +20,10 @@ namespace PokemonWeb
 		{
 			try
 			{
+				Page.Validate();
+				if (!Page.IsValid)
+					return;
+
 				Entrenador user = new Entrenador();
 				EntrenadorNegocio negocio = new EntrenadorNegocio();
 
@@ -33,7 +37,7 @@ namespace PokemonWeb
 				}
 				else
 				{
-					Session.Add("error", "Hubo un error en el login, intente nuevamente");
+					Session.Add("error", "Usuario o contraseña incorrectos");
 					Response.Redirect("Error.aspx", false);
 				}
 			}
@@ -45,7 +49,23 @@ namespace PokemonWeb
 
 		protected void btnCancelarIngreso_Click(object sender, EventArgs e)
 		{
-			Response.Redirect("Default.aspx", false);
+			try
+			{
+				Response.Redirect("Default.aspx", false);
+			}
+			catch (Exception ex)
+			{
+				Session.Add("error", "hubo un error al redireccionar");
+			}
+		}
+
+
+		private void Page_Error(object sender, EventArgs e)
+		{
+			Exception exc = Server.GetLastError();
+
+			Session.Add("error", exc.ToString());
+			Server.Transfer("Error.aspx");
 		}
 	}
 }

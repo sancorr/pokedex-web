@@ -27,6 +27,14 @@ namespace PokemonWeb
 					if (!string.IsNullOrEmpty(user.ImagenPerfil))
 						imageAvatar.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
 				}
+				
+			}
+			else if(Page is Default && Seguridad.sesionActiva(Session["user"]))
+			{
+				Entrenador user = (Entrenador)Session["user"];
+				lblUser.Text = user.Email;
+				if (!string.IsNullOrEmpty(user.ImagenPerfil))
+					imageAvatar.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
 			}
 		}
 
