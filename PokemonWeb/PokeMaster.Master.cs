@@ -13,28 +13,31 @@ namespace PokemonWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			imageAvatar.ImageUrl = "https://imgs.search.brave.com/UoEGoEVhpqRO83GQUva4-8Xw_r1PhAGKGtCKmb9aaDA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4Lzc1LzQ1Lzk3/LzM2MF9GXzg3NTQ1/OTcxOV84aTdKM2F0/R2JzRG9SUFQwWlcw/RGpCcGdBRlZUcktB/ZS5qcGc";
-			if (!(Page is Login || Page is Registro || Page is Default || Page is Error))
+			if (!IsPostBack)
 			{
-				if (!Seguridad.sesionActiva(Session["user"]))
+				imageAvatar.ImageUrl = "https://imgs.search.brave.com/UoEGoEVhpqRO83GQUva4-8Xw_r1PhAGKGtCKmb9aaDA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4Lzc1LzQ1Lzk3/LzM2MF9GXzg3NTQ1/OTcxOV84aTdKM2F0/R2JzRG9SUFQwWlcw/RGpCcGdBRlZUcktB/ZS5qcGc";
+
+				if (!(Page is Login || Page is Registro || Page is Default || Page is Error))
 				{
-					Response.Redirect("Login.aspx");
+					if(!Seguridad.sesionActiva(Session["user"]))
+					{
+						Response.Redirect("Login.aspx", false);
+					}
+					else
+					{
+						Entrenador user = (Entrenador)Session["user"];
+						lblUser.Text = user.Email;
+						if (!string.IsNullOrEmpty(user.ImagenPerfil))
+							imageAvatar.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
+					}
 				}
-				else
+				else if(Page is Default || Page is Error && Seguridad.sesionActiva(Session["user"]))
 				{
 					Entrenador user = (Entrenador)Session["user"];
 					lblUser.Text = user.Email;
 					if (!string.IsNullOrEmpty(user.ImagenPerfil))
 						imageAvatar.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
 				}
-				
-			}
-			else if(Page is Default && Seguridad.sesionActiva(Session["user"]))
-			{
-				Entrenador user = (Entrenador)Session["user"];
-				lblUser.Text = user.Email;
-				if (!string.IsNullOrEmpty(user.ImagenPerfil))
-					imageAvatar.ImageUrl = "~/Images/Perfil/" + user.ImagenPerfil;
 			}
 		}
 

@@ -35,6 +35,10 @@ namespace PokemonWeb
 					DropDownDebilidad.DataTextField = "Descripcion";
 					DropDownDebilidad.DataBind();
 				}
+
+				btnEliminar.Visible = false;
+				btnDesabilitar.Visible = false;
+
 				//Si es modificacion..
 				string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
 
@@ -55,6 +59,9 @@ namespace PokemonWeb
 					DropDownTipo.SelectedValue = pokemon.Tipo.Id.ToString();
 					DropDownDebilidad.SelectedValue = pokemon.Debilidad.Id.ToString();
 
+
+					btnEliminar.Visible = true;
+					btnDesabilitar.Visible = true;
 					//configuraciones varias
 					if (!pokemon.Activo) {
 						btnDesabilitar.Text = "Hablitar";

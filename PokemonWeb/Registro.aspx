@@ -2,13 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <hr />
     <div class="row">
         <div class="col-5">
             <h3>Creá tu perfil entrenador</h3>
             <div class="mb-3">
                 <asp:Label runat="server" CssClass="form-label">Email</asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="tbxEmailEntrenador"></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxEmailEntrenador" ErrorMessage="Email es un campo requerido"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxEmailEntrenador" ErrorMessage="Email es un campo requerido" Display="Dynamic"/>          
+                <asp:RegularExpressionValidator ID="validatorEmail" runat="server" ControlToValidate="tbxEmailEntrenador" ErrorMessage="El formato de email no es correcto" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" Display="Dynamic"/>
             </div>
             <div class="mb-3">
                 <asp:Label runat="server" CssClass="form-label">Password</asp:Label>

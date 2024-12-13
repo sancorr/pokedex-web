@@ -59,6 +59,7 @@
                         </div>
                     </div>
                 </div>
+                <asp:Label runat="server" ID="lblErrorFiltro" Visible="false" CssClass="text-danger" Text="" />
             </div>
             <%} %>
 

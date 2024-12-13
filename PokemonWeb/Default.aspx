@@ -9,7 +9,7 @@
             <ItemTemplate>
                     <div class="col">
                         <div class="card">
-                            <img src="<%#Eval("UrlImagen") %>" class="card-img-top" alt="...">
+                            <img src="<%# string.IsNullOrEmpty((string)Eval("UrlImagen")) || !Eval("UrlImagen").ToString().Contains("http") ? "https://imgs.search.brave.com/TvImnNqSmkLvWLy9Y1Hkith2FQJECMibPyhZ122wNb0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/dmVjdG9yLWdyYXRp/cy9pbHVzdHJhY2lv/bi1jb25jZXB0by1j/YXJwZXRhLWltYWdl/bmVzXzExNDM2MC0x/MTQuanBnP3NlbXQ9/YWlzX2h5YnJpZA" : Eval("UrlImagen") %>" class="card-img-top" alt="<%#Eval("Nombre") %>">
                             <div class="card-body">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                 <p class="card-text"><%#Eval("Descripcion") %></p>

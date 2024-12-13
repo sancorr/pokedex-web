@@ -13,7 +13,8 @@
             <div class="mb-3">
                 <asp:Label runat="server" for="tbxNumero" ID="lblNumero" CssClass="form-label" Text="Número"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="tbxNumero"></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxNumero" ErrorMessage="Número es requerido"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxNumero" ErrorMessage="Número es requerido" Display="Dynamic"/>
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="tbxNumero" ErrorMessage="Solo se adminten numeros enteros" ValidationExpression="^\d+$" Display="Dynamic" />
             </div>
 
             <div class="mb-3">
@@ -24,8 +25,8 @@
 
             <div class="mb-3">
                 <asp:Label runat="server" for="tbxDescripcion" ID="lblDescripcion" CssClass="form-label" Text="Descripción"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="tbxDescripcion" TextMode="MultiLine"></asp:TextBox>
-                <asp:RangeValidator runat="server" Type="String" MinimumValue="0" MaximumValue="50" ErrorMessage="Máximo 50 caracteres" ControlToValidate="tbxDescripcion" />
+                <asp:TextBox runat="server" CssClass="form-control" ID="tbxDescripcion" MaxLength="50" TextMode="MultiLine"></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="tbxDescripcion"  Display="Dynamic" ErrorMessage="Campo requerido-Máximo 50 caracteres"/>
             </div>
 
             <div class="mb-3">

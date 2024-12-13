@@ -32,8 +32,8 @@
                                 <asp:Button runat="server" ID="btnRegistrarse" CssClass="btn btn-outline-success" Text="Registrarse" OnClick="btnRegistrarse_Click"/>
                                 <%} else { %>
                                 <asp:Button runat="server" ID="btnSalir" CssClass="btn btn-outline-danger" Text="Salir" OnClick="btnSalir_Click"/>
-                                <%} %>
                                 <asp:Label runat="server" Text="" ID="lblUser" style="color: white;"/>
+                                <%} %>
                                 <asp:Image runat="server" ID="imageAvatar" style="height:40px; width:40px; border-radius:50%;" />
                             </div>
                         </div>

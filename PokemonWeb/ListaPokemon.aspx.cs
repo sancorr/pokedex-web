@@ -55,7 +55,7 @@ namespace PokemonWeb
 				string id = dgvListaPokemon.SelectedDataKey.Value.ToString();
 				Response.Redirect("FormPokemon.aspx?id=" + id, false);
 			}
-			catch (Exception ec)
+			catch (Exception ex)
 			{
 				Session.Add("error", "Error al redireccionar");
 			}
@@ -104,6 +104,19 @@ namespace PokemonWeb
 			try
 			{
 				PokemonNegocio negocio = new PokemonNegocio();
+				if (string.IsNullOrEmpty(ddlCampo.SelectedItem.Value) ||
+					ddlCriterio.SelectedItem == null ||
+				   string.IsNullOrEmpty(ddlCriterio.SelectedItem.Value) ||
+				   string.IsNullOrEmpty(tbxFiltro.Text) ||
+				   string.IsNullOrEmpty(ddlEstado.SelectedItem.Value))
+				{
+					lblErrorFiltro.Text = "Todos los campos de búsqueda son obligatorios";
+					lblErrorFiltro.Visible = true;
+					return;
+				}
+				else
+					lblErrorFiltro.Visible = false;
+
 				dgvListaPokemon.DataSource = negocio.filtrar(ddlCampo.SelectedItem.ToString(), ddlCriterio.SelectedItem.ToString(), tbxFiltro.Text, ddlEstado.SelectedItem.ToString());
 				dgvListaPokemon.DataBind();
 			}
