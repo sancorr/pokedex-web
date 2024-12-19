@@ -44,7 +44,8 @@ namespace PokemonWeb
 			}
 			catch (Exception ex)
 			{
-				Session.Add("error", "error al redireccionar");
+				Session.Add("error", "Error al redireccionar...");
+				Response.Redirect("Error.aspx", false);
 			}
 		}
 

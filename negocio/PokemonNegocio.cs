@@ -71,7 +71,7 @@ namespace negocio
                 {
                     Pokemon aux = new Pokemon();
                     aux.Id = (int)lector["Id"];
-                    aux.Numero = lector.GetInt32(0);
+                    aux.Numero = (int)lector["Numero"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
 
@@ -95,7 +95,6 @@ namespace negocio
             {
                 throw ex;
             }
-
         }
 		public void agregarConSp(Pokemon nuevo)
         {
@@ -296,6 +295,25 @@ namespace negocio
             }
         }
 
+        public void agregarElemento(string elemento)
+		{
+            AccesoDatos datos = new AccesoDatos();
+			try
+			{
+                datos.setearConsulta("insert into ELEMENTOS values(@elemento)");
+                datos.setearParametro("@elemento", elemento);
+                datos.ejecutarAccion();
+			}
+			catch (Exception ex)
+			{
+
+				throw ex;
+			}
+			finally
+			{
+                datos.cerrarConexion();
+			}
+		}
 
     }
 }

@@ -29,8 +29,7 @@ namespace PokemonWeb
 			try
 			{
 				string valor = ((Button)sender).CommandArgument;
-				Response.Redirect("DetallePokemon.aspx?id=" + valor);
-
+				Response.Redirect("DetallePokemon.aspx?id=" + valor, false);
 			}
 			catch (Exception ex)
 			{

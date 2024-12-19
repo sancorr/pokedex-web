@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PokeMaster.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="PokemonWeb.MiPerfil" %>
+﻿<%@ Page Title="Mi perfil | Pokemon App" Language="C#" MasterPageFile="~/PokeMaster.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="PokemonWeb.MiPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -34,7 +34,7 @@
 
         <div class="col-md-5">
             <div class="mb-3">
-                <asp:Label runat="server" ID="lblImagenPerfil" for="tbxImagenPerfil" Text="Imagen de perfil" CssClass="form-label" />
+                <asp:Label runat="server" ID="lblImagenPerfil" for="tbxImagenPerfil" Text="Imagen de perfil (Sólo .jpg)" CssClass="form-label" />
                 <input runat="server" type="file" ID="tbxImagenPerfil" class="form-control"/>
             </div>
             <asp:Image runat="server" ID="imagenPerfil" ImageUrl="https://imgs.search.brave.com/UoEGoEVhpqRO83GQUva4-8Xw_r1PhAGKGtCKmb9aaDA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4Lzc1LzQ1Lzk3/LzM2MF9GXzg3NTQ1/OTcxOV84aTdKM2F0/R2JzRG9SUFQwWlcw/RGpCcGdBRlZUcktB/ZS5qcGc" CssClass="img-fluid mb-3" />

@@ -59,7 +59,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="script_db\listarProcedure.sql" />
     <Content Include="script_db\POKEDEX_DB.sql" />
+    <Content Include="script_db\storedAddPokemon.sql" />
+    <Content Include="script_db\storedInsertTrainee.sql" />
+    <Content Include="script_db\storedModifPokemon.sql" />
+    <Content Include="script_db\USERS.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

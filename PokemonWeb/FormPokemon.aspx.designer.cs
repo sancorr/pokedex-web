@@ -78,6 +78,15 @@ namespace PokemonWeb
 		protected global::System.Web.UI.WebControls.TextBox tbxDescripcion;
 
 		/// <summary>
+		/// Control UpdatePanel3.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+
+		/// <summary>
 		/// Control lblTipo.
 		/// </summary>
 		/// <remarks>
@@ -112,6 +121,51 @@ namespace PokemonWeb
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.DropDownList DropDownDebilidad;
+
+		/// <summary>
+		/// Control btnAgregarElemento.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnAgregarElemento;
+
+		/// <summary>
+		/// Control lblAgregarElemento.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblAgregarElemento;
+
+		/// <summary>
+		/// Control lblElemento.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblElemento;
+
+		/// <summary>
+		/// Control tbxAgregarElemento.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox tbxAgregarElemento;
+
+		/// <summary>
+		/// Control btnConfimarElemento.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnConfimarElemento;
 
 		/// <summary>
 		/// Control btnAceptar.

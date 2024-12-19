@@ -11,12 +11,14 @@ namespace PokemonWeb
 {
 	public partial class FormPokemon : System.Web.UI.Page
 	{
+		public bool AgregarElemento { get; set; }
 		public bool Eliminar { get; set; }
 		public List<Elemento> ListaElementos { get; set; }
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			try
 			{
+				AgregarElemento = false;
 				Eliminar = false;
 				if (!IsPostBack)
 				{
@@ -42,7 +44,8 @@ namespace PokemonWeb
 				//Si es modificacion..
 				string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
 
-				if (id != "" && !IsPostBack) {
+				if (id != "" && !IsPostBack)
+				{
 					PokemonNegocio negocio = new PokemonNegocio();
 					List<Pokemon> lista = negocio.listar(id);
 					Pokemon pokemon = lista[0];
@@ -63,7 +66,8 @@ namespace PokemonWeb
 					btnEliminar.Visible = true;
 					btnDesabilitar.Visible = true;
 					//configuraciones varias
-					if (!pokemon.Activo) {
+					if (!pokemon.Activo)
+					{
 						btnDesabilitar.Text = "Hablitar";
 					}
 				}
@@ -155,7 +159,7 @@ namespace PokemonWeb
 			{
 				Session.Add("error", ex.ToString());
 			}
-			
+
 		}
 
 
@@ -165,6 +169,60 @@ namespace PokemonWeb
 
 			Session.Add("error", exc.ToString());
 			Server.Transfer("Error.aspx");
+		}
+
+		protected void btnAgregarElemento_Click(object sender, EventArgs e)
+		{
+			AgregarElemento = true;
+		}
+
+		protected void btnConfimarElemento_Click(object sender, EventArgs e)
+		{
+			PokemonNegocio negocio = new PokemonNegocio();
+			ElementoNegocio elementoNegocio = new ElementoNegocio();
+			try
+			{
+				if (!string.IsNullOrEmpty(tbxAgregarElemento.Text))
+				{
+					ListaElementos = elementoNegocio.listar();
+					var elementoExistente = ListaElementos.Find(x => x.Descripcion.ToLower() == tbxAgregarElemento.Text.ToLower());
+
+					if (elementoExistente == null)
+					{
+						negocio.agregarElemento(tbxAgregarElemento.Text);
+
+						
+						ListaElementos = elementoNegocio.listar();
+
+						DropDownTipo.DataSource = ListaElementos;
+						DropDownTipo.DataValueField = "Id";
+						DropDownTipo.DataTextField = "Descripcion";
+						DropDownTipo.DataBind();
+
+						DropDownDebilidad.DataSource = ListaElementos;
+						DropDownDebilidad.DataValueField = "Id";
+						DropDownDebilidad.DataTextField = "Descripcion";
+						DropDownDebilidad.DataBind();
+
+						lblAgregarElemento.Text = "Elemento agregado!";
+						lblAgregarElemento.Visible = true;
+					}
+					else
+					{
+						lblAgregarElemento.Text = "Ese elemento ya existe";
+						lblAgregarElemento.Visible = true;
+					}
+				}
+				else
+				{
+					lblAgregarElemento.Text = "Este campo es requerido";
+					lblAgregarElemento.Visible = true;
+				}
+			}
+			catch (Exception ex)
+			{
+				Session.Add("error", ex.ToString());
+			}
 		}
 	}
 }
