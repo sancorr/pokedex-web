@@ -70,6 +70,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DetallePokemon.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="favicon.png" />
     <Content Include="Favoritos.aspx" />
     <Content Include="FormPokemon.aspx" />
     <Content Include="Global.asax" />
